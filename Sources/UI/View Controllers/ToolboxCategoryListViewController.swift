@@ -241,6 +241,14 @@ public protocol ToolboxCategoryListViewControllerDelegate: class {
     cell.isSelected = (selectedCategory == cell.category)
     return cell
   }
+  
+//  public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+//    return 0
+//  }
+//
+//  public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+//    return 0
+//  }
 
   // MARK: - UICollectionViewDelegate Methods
 
@@ -317,8 +325,8 @@ extension ToolboxCategoryListViewController: UICollectionViewDelegateFlowLayout 
 @objcMembers private class ToolboxCategoryListViewCell: UICollectionViewCell {
   static let ReusableCellIdentifier = "ToolboxCategoryListViewCell"
 
-  static let ColorTagViewHeight = CGFloat(8)
-  static let LabelInsets = UIEdgeInsetsMake(4, 8, 4, 8)
+  static let ColorTagViewHeight = CGFloat(2)
+  static let LabelInsets = UIEdgeInsetsMake(4, 16, 4, 16)
   static let CellHeight = CGFloat(48)
   static let IconSize = CGSize(width: 32, height: 32)
 
@@ -425,7 +433,7 @@ extension ToolboxCategoryListViewController: UICollectionViewDelegateFlowLayout 
       rotationView.bounds =
         CGRect(x: 0, y: 0, width: contentView.bounds.height, height: contentView.bounds.width)
       // Rotate by -90° (in LTR) or 90° (in RTL) so the category appears vertically
-      rotationView.transform = CGAffineTransform(rotationAngle: -CGFloat.pi / 2.0 * rtlAdjustment)
+      rotationView.transform = CGAffineTransform(rotationAngle: CGFloat.pi / 2.0 * rtlAdjustment)
 
       // Position color tag at the bottom of the rotation view.
       colorTagView.frame = CGRect(

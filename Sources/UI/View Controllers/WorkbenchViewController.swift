@@ -587,7 +587,8 @@ public protocol WorkbenchViewControllerDelegate: class {
         // Position the trash can folder view on the bottom of the view, between the toolbox
         // category view and trash can button
 //        "H:[toolboxCategoryView]-[trashCanFolderView]-(iconPadding)-[trashCanView]",
-//        "V:[trashCanFolderView]|",
+        "H:[toolboxCategoryView]-[trashCanFolderView]-(50)-|",
+        "V:[trashCanFolderView]|",
       ]
 
       // If possible, create horizontal constraints that respect the safe area. If not, default
