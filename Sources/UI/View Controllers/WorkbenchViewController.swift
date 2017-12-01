@@ -515,7 +515,7 @@ public protocol WorkbenchViewControllerDelegate: class {
     if style == .alternate {
       // Position the button inside the trashCanView to be `(iconPadding, iconPadding)`
       // away from the top-trailing corner.
-      trashCanView.setButtonPadding(top: iconPadding, leading: 0, bottom: 0, trailing: iconPadding)
+//      trashCanView.setButtonPadding(top: iconPadding, leading: 0, bottom: 0, trailing: iconPadding)
       constraints = [
         // Position the toolbox category list along the bottom margin, and let the workspace view
         // fill the rest of the space
@@ -536,11 +536,13 @@ public protocol WorkbenchViewControllerDelegate: class {
         "V:[topGuide]-(iconPadding)-[redoButton]",
         // Position the trash can button along the top-trailing margin (horizontal part handled
         // below).
-        "V:[topGuide][trashCanView]",
+//        "V:[topGuide][trashCanView]",
+        "H:|[trashCanView]|",
+        "V:[trashCanView(==toolboxCategoriesListView)]|",
         // Position the trash can folder view on the trailing edge of the view, between the toolbox
         // category view and trash can button
-        "H:[trashCanFolderView]|",
-        "V:[trashCanView]-(iconPadding)-[trashCanFolderView]-[toolboxCategoryView]",
+//        "H:[trashCanFolderView]|",
+//        "V:[trashCanView]-(iconPadding)-[trashCanFolderView]-[toolboxCategoryView]",
       ]
 
       // If possible, create horizontal constraints that respect the safe area. If not, default
@@ -548,18 +550,18 @@ public protocol WorkbenchViewControllerDelegate: class {
       if #available(iOS 11.0, *) {
         undoButton.leadingAnchor.constraint(
           equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: iconPadding).isActive = true
-        trashCanView.trailingAnchor.constraint(
-          equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+//        trashCanView.trailingAnchor.constraint(
+//          equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
       } else {
         constraints.append(contentsOf: [
           "H:|-(iconPadding)-[undoButton]",
-          "H:[trashCanView]|"
+//          "H:[trashCanView]|"
         ])
       }
     } else {
       // Position the button inside the trashCanView to be `(iconPadding, iconPadding)`
       // away from the bottom-trailing corner.
-      trashCanView.setButtonPadding(top: 0, leading: 0, bottom: iconPadding, trailing: iconPadding)
+//      trashCanView.setButtonPadding(top: 0, leading: 0, bottom: iconPadding, trailing: iconPadding)
       constraints = [
         // Position the toolbox category list along the leading margin, and let the workspace view
         // fill the rest of the space
@@ -579,21 +581,23 @@ public protocol WorkbenchViewControllerDelegate: class {
         "V:[redoButton]-(iconPadding)-[bottomGuide]",
         // Position the trash can button along the bottom-trailing margin (horizontal part handled
         // below).
-        "V:[trashCanView][bottomGuide]",
+//        "V:[trashCanView][bottomGuide]",
+        "H:|[trashCanView(==toolboxCategoriesListView)]",
+        "V:|[trashCanView]|",
         // Position the trash can folder view on the bottom of the view, between the toolbox
         // category view and trash can button
-        "H:[toolboxCategoryView]-[trashCanFolderView]-(iconPadding)-[trashCanView]",
-        "V:[trashCanFolderView]|",
+//        "H:[toolboxCategoryView]-[trashCanFolderView]-(iconPadding)-[trashCanView]",
+//        "V:[trashCanFolderView]|",
       ]
 
       // If possible, create horizontal constraints that respect the safe area. If not, default
       // to using the superview's leading/trailing margins.
       if #available(iOS 11.0, *) {
-        trashCanView.trailingAnchor.constraint(
-          equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+//        trashCanView.trailingAnchor.constraint(
+//          equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
       } else {
         constraints.append(contentsOf: [
-          "H:[trashCanView]|"
+//          "H:[trashCanView]|"
         ])
       }
     }
@@ -1774,6 +1778,11 @@ extension WorkbenchViewController: BlocklyPanGestureRecognizerDelegate {
         removeBlockFromTrash(oldBlock)
 
         removeUIStateValue(stateTrashCanOpen, animated: false)
+        
+      } else if let deletable = block.blockLayout?.block.deletable, deletable {
+        toolboxCategoryListViewController.view.isHidden = true // Show trash view
+      } else {
+        toolboxCategoryListViewController.view.isHidden = false // Hide trash view
       }
 
       guard let blockLayout = blockView.blockLayout?.draggableBlockLayout else {
@@ -1795,9 +1804,12 @@ extension WorkbenchViewController: BlocklyPanGestureRecognizerDelegate {
 
       if isGestureTouchingTrashCan(gesture) && blockLayout.block.deletable {
         addUIStateValue(stateTrashCanHighlighted)
+        toolboxCategoryListViewController.view.isHidden = true // Show trash view
       } else {
         removeUIStateValue(stateTrashCanHighlighted)
       }
+    } else {
+        toolboxCategoryListViewController.view.isHidden = false // Hide trash view
     }
 
     if (touchState == .ended || touchState == .cancelled) && _dragger.numberOfActiveDrags > 0 {
@@ -1828,6 +1840,8 @@ extension WorkbenchViewController: BlocklyPanGestureRecognizerDelegate {
       } else {
         _dragger.finishDraggingBlockLayout(blockLayout)
       }
+        
+      toolboxCategoryListViewController.view.isHidden = false // Hide trash view
 
       if _dragger.numberOfActiveDrags == 0 {
         // Update the UI state

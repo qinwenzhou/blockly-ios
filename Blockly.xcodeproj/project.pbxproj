@@ -713,11 +713,11 @@
 		FA4BB4B31B7575FE000980E9 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				FAA870131C642805000C7C61 /* View Controllers */,
-				FA4BB5681B7C03EA000980E9 /* Views */,
-				30DC64DA1D875C88002D2186 /* BlocklyPanGestureRecognizer.swift */,
 				FA2CA3521EA84F990054924E /* PathHelper.swift */,
 				FAA870111C64276A000C7C61 /* WorkspaceBezierPath.swift */,
+				30DC64DA1D875C88002D2186 /* BlocklyPanGestureRecognizer.swift */,
+				FA4BB5681B7C03EA000980E9 /* Views */,
+				FAA870131C642805000C7C61 /* View Controllers */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -844,13 +844,13 @@
 		FA548C5E1B63144A008BC59C /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				FA548C601B63144A008BC59C /* Info.plist */,
 				3064BAB21DAF3DC1006425A2 /* ObjC */,
 				FAA86FF21C64272C000C7C61 /* Common */,
 				FA548C851B66E861008BC59C /* Model */,
 				FA2726741B83C54900777B49 /* Layout */,
 				FAE5576C1BE0219C0019D0D4 /* Control */,
 				FA4BB4B31B7575FE000980E9 /* UI */,
-				FA548C601B63144A008BC59C /* Info.plist */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -953,11 +953,11 @@
 				FAA870151C642805000C7C61 /* DropdownOptionsViewController.swift */,
 				FAA870141C642805000C7C61 /* FieldColorPickerViewController.swift */,
 				FA59BC541ED6634900EF1646 /* NumberPadViewController.swift */,
+				FA8425211D35D4140092CDDC /* WorkspaceViewController.swift */,
 				FAFD379C1C9B90B100C77049 /* ToolboxCategoryListViewController.swift */,
 				FA16C2851D407E6500BAAFA2 /* ToolboxCategoryViewController.swift */,
 				FAA870161C642805000C7C61 /* TrashCanViewController.swift */,
 				FAA870171C642805000C7C61 /* WorkbenchViewController.swift */,
-				FA8425211D35D4140092CDDC /* WorkspaceViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";

@@ -268,18 +268,18 @@
 		FAE2A6431C756AA20085D36B /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				FA4DBED51DB04B26002E493E /* AllFieldsWorkbenchViewController.swift */,
-				FAE2A6441C756AA20085D36B /* AppDelegate.swift */,
-				FAE2A6451C756AA20085D36B /* BlocklySample-Bridging-Header.h */,
-				FA5F2BC31C7692D0008384BE /* DemoPickerViewController.swift */,
-				FAB15D1A1F4E395C002B51DA /* FileHelper.swift */,
 				FAE2A6461C756AA20085D36B /* SampleObjCObject.h */,
+				FAE2A6451C756AA20085D36B /* BlocklySample-Bridging-Header.h */,
+				FAB15D1A1F4E395C002B51DA /* FileHelper.swift */,
+				FAE2A6441C756AA20085D36B /* AppDelegate.swift */,
+				FA5F2BC31C7692D0008384BE /* DemoPickerViewController.swift */,
 				FAE2A6471C756AA20085D36B /* SimpleWorkbenchViewController.swift */,
+				FA4DBED51DB04B26002E493E /* AllFieldsWorkbenchViewController.swift */,
+				302352761DB04B0100450D09 /* TurtleViewControllerInterface.h */,
+				FA5F28B01C756B73008384BE /* TurtleSwiftViewController.swift */,
 				FAC357ED1D92598C003FB436 /* TurtleObjCViewController.h */,
 				FAC357E41D9244A2003FB436 /* TurtleObjCViewController.m */,
 				3035DCFE1DA45C940087B9CC /* TurtleViewController.xib */,
-				FA5F28B01C756B73008384BE /* TurtleSwiftViewController.swift */,
-				302352761DB04B0100450D09 /* TurtleViewControllerInterface.h */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -319,7 +319,7 @@
 				TargetAttributes = {
 					FA548C291B6312AE008BC59C = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = EQHXZ8M8AV;
+						DevelopmentTeam = YC55GKNCVZ;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
@@ -623,7 +623,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = NO;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = EQHXZ8M8AV;
+				DEVELOPMENT_TEAM = YC55GKNCVZ;
 				INFOPLIST_FILE = BlocklySample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -645,7 +645,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = NO;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = EQHXZ8M8AV;
+				DEVELOPMENT_TEAM = YC55GKNCVZ;
 				INFOPLIST_FILE = BlocklySample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

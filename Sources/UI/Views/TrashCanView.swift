@@ -47,6 +47,8 @@ import Foundation
   public required init(imageNamed imageName: String, size: CGSize? = nil) {
     super.init(frame: CGRect.zero)
 
+    self.backgroundColor = UIColor(white: 0.85, alpha: 1.0)
+    
     if let imageSize = size {
       _imageSize = imageSize
     }
@@ -60,9 +62,9 @@ import Foundation
     }
 
     // Forces the image to completely fill the button
-    button.imageView?.contentMode = .scaleAspectFit
-    button.contentHorizontalAlignment = .fill
-    button.contentVerticalAlignment = .fill
+//    button.imageView?.contentMode = .scaleAspectFit
+//    button.contentHorizontalAlignment = .fill
+//    button.contentVerticalAlignment = .fill
 
     // Add the button and its constraints
     let views: [String: UIView] = ["button": button]
@@ -73,8 +75,8 @@ import Foundation
     bky_addSubviews(Array(views.values))
     bky_addVisualFormatConstraints(constraints, metrics: nil, views: views)
 
-    _trashCanHeightConstraint = button.bky_addHeightConstraint(_imageSize.height)
-    _trashCanWidthConstraint = button.bky_addWidthConstraint(_imageSize.width)
+//    _trashCanHeightConstraint = button.bky_addHeightConstraint(_imageSize.height)
+//    _trashCanWidthConstraint = button.bky_addWidthConstraint(_imageSize.width)
     self.translatesAutoresizingMaskIntoConstraints = false
     self.layoutMargins = UIEdgeInsets.zero
   }
@@ -118,16 +120,28 @@ import Foundation
 
     _highlighted = highlighted
 
-    bky_updateConstraints(animated: animated, update: {
-      if self._highlighted {
-        self._trashCanHeightConstraint.constant = self._imageSize.height * 2
-        self._trashCanWidthConstraint.constant = self._imageSize.width * 2
-        self.layer.opacity = 0.7
-      } else {
-        self._trashCanHeightConstraint.constant = self._imageSize.height
-        self._trashCanWidthConstraint.constant = self._imageSize.width
-        self.layer.opacity = 1.0
-      }
-    })
+    if self._highlighted {
+        UIView.animate(withDuration: 0.25) {
+            self.alpha = 0.6
+            self.backgroundColor = UIColor.red
+            self.button.transform = self.button.transform.scaledBy(x: 1.6, y: 1.6)
+        }
+    } else {
+        UIView.animate(withDuration: 0.25) {
+            self.backgroundColor = UIColor(white: 0.85, alpha: 1.0)
+            self.button.transform = CGAffineTransform.identity
+        }
+    }
+//    bky_updateConstraints(animated: animated, update: {
+//      if self._highlighted {
+//        self._trashCanHeightConstraint.constant = self._imageSize.height * 2
+//        self._trashCanWidthConstraint.constant = self._imageSize.width * 2
+//        self.layer.opacity = 0.7
+//      } else {
+//        self._trashCanHeightConstraint.constant = self._imageSize.height
+//        self._trashCanWidthConstraint.constant = self._imageSize.width
+//        self.layer.opacity = 1.0
+//      }
+//    })
   }
 }
